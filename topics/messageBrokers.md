@@ -15,7 +15,7 @@ Example of how you might use Azure Service Bus to send and receive messages in C
 
 Sending a message:
 
-```
+```cs
 string connectionString = "your_connection_string";
 string queueName = "your_queue_name";
 
@@ -32,7 +32,7 @@ client.CloseAsync().Wait();
 
 Receiving a message:
 
-```
+```cs
 string connectionString = "your_connection_string";
 string queueName = "your_queue_name";
 
@@ -58,7 +58,7 @@ client.CloseAsync().Wait();
 
 Sending a message:
 
-```
+```cs
 string hostname = "your_hostname";
 string queueName = "your_queue_name";
 
@@ -77,7 +77,7 @@ using (var channel = connection.CreateModel())
 
 Receiving a message:
 
-```
+```cs
 string hostname = "your_hostname";
 string queueName = "your_queue_name";
 
