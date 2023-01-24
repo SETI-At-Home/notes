@@ -1,5 +1,27 @@
 # Nginx
 
+Nginx is a web server that primarily serves static content. It can serve static HTML files, but for dynamically generated HTML, it has to pass requests to other processes to generate the HTML. For example, when a user requests a PHP file, Nginx sends the request to a PHP interpreter, which then returns the HTML, which is sent back to the user by Nginx.
+
+Nginx communicates with the PHP interpreter through a unix socket file and with website visitors through a TCP socket file.
+
+To access an Nginx server on a guest (VM) from a host, set up port forwarding in Virtualbox with the name "nginx", the host port "80", and the guest port "80".
+
+To install Nginx on a system, run the command apt-get install nginx after updating the package list with apt-get update.
+
+If additional modules are needed, Nginx must be compiled from source and the modules added during the compilation phase.
+
+The main server configuration file for Nginx is located at /etc/nginx/nginx.conf, and specific site configurations should be placed in the /etc/nginx/conf.d/ folder. These configurations override any settings in the main nginx.conf file.
+
+The http {} block is for all incoming HTTP requests.
+
+The default location for Nginx's configuration file is /etc/nginx/nginx.conf, but an arbitrary path can be passed in using the -c flag. For example, nginx -c /usr/local/nginx/conf.
+
+Useful commands include systemctl status nginx to check if Nginx is running, systemctl start nginx to start Nginx if not running, and systemctl restart nginx to reload Nginx.
+
+Some important terms used in Nginx include "blocks" which are sections to which directives are applied, "vhost" which is a virtual host defined in the http block, and "directives" which are specific configuration options composed of an option name and option value.
+
+It's important to include the mime.types file in the http block, because otherwise, all different files will be served as simple text files, and thus not rendered correctly.
+
 It only knows about static content. While it can serve static HTML, for dynamically generated HTML, it has to offload requests to other processes in order to generate HTML. Ex. User requests a PHP file, and nginx sends it to an interpreter, which then returns the HTML, which is sent back by nginx.
 
 Nginx communicates with the PHP interpreter via a **unix socket** file. Nginx communicates with the website visitor via a **TCP socket** file.
