@@ -1,3 +1,11 @@
+To further enhance the security of the app, it's recommended to use a package like dotenv-expand which allows for referencing other environment variables in the .env file. This allows for the use of a single source of truth for sensitive information, such as an environment variable that contains the database password.
+
+Another way to secure the environment variables is to use a package like dotenv-webpack which allows for loading environment variables during the webpack build process. This way, the environment variables are never exposed in the JavaScript code and are only available during the build.
+
+It's also important to note that environment variables are only accessible by the process that sets them and its child processes. To share environment variables between multiple processes, a process manager like PM2 can be used.
+
+In summary, using environment variables is an effective way to manage different parameters depending on the environment while keeping sensitive information secure. It's important to never commit the .env file and to use packages like dotenv-expand and dotenv-webpack to further secure the environment variables.
+
 In order to use different parameters in our app depending on the enviroment such as...
 
 -   Server ports
